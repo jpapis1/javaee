@@ -7,9 +7,9 @@
 	<name>Java EE 6 - Servlet and JSP demo</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    	<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+  	</properties>
 	<repositories>
 		<!-- Several key Java EE APIs and RIs are missing from the Maven Central 
 			Repository -->
