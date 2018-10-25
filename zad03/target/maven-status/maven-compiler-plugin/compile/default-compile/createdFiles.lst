@@ -1,0 +1,9 @@
+app/web/LoginFormServlet.class
+app/AboutServlet.class
+app/service/UserService.class
+app/domain/User.class
+app/service/ShopService.class
+app/web/RegisterFormServlet.class
+app/web/ShopFormServlet.class
+app/MenuServlet.class
+app/domain/Parrot.class
