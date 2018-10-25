@@ -9,8 +9,7 @@ public class Parrot {
     private double weight;
     private boolean isExotic;
 
-    public Parrot(int id, String name, Date dateOfBirth, double weight, boolean isExotic) {
-        this.id = id;
+    public Parrot(String name, Date dateOfBirth, double weight, boolean isExotic) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.weight = weight;
@@ -55,5 +54,15 @@ public class Parrot {
 
     public void setExotic(boolean exotic) {
         isExotic = exotic;
+    }
+
+    @Override
+    public String toString() {
+        return "Parrot{" +
+                "name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", weight=" + weight +
+                ", isExotic=" + isExotic +
+                '}';
     }
 }

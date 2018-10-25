@@ -2,23 +2,28 @@ package app.service;
 
 import app.domain.Parrot;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class ShopService {
-    static private Map<Integer, Parrot> map = new HashMap<>();
-    static public void add(Parrot parrot) {
-        int i = 0;
-        while(map.containsKey(i)) {
-            i++;
-        }
-        map.put(i, parrot);
+    private static ArrayList<Parrot> basket = new ArrayList<>();
+    static public void addToBasket(Parrot parrot) {
+        basket.add(parrot);
+        ParrotService.removeParrot(parrot.getId());
     }
-    static public void remove(int id) {
-        map.remove(id);
+    static public void addToBasket(int id) {
+        basket.add(ParrotService.getParrot(id));
+        ParrotService.removeParrot(id);
+    }
+    static public void removeFromBasket(int id) {
+        for(Parrot parrot: basket) {
+            if(parrot.getId()==id) {
+                basket.remove(id);
+                break;
+            }
+        }
+    }
+    static public ArrayList<Parrot> getBasket() {
+        return basket;
     }
 
-    static public Map<Integer, Parrot> getMap() {
-        return map;
-    }
 }
