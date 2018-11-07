@@ -22,9 +22,10 @@ public class ShopFormServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        if(ParrotService.getMap().size()>0) {
+        if(getServletContext().getAttribute("parrot_service")!=null) {
             out.println("<h2>Dostępne papugi</h2>");
-            for(Parrot parrot : ParrotService.getMap().values()) {
+            ParrotService parrotService = (ParrotService) getServletContext().getAttribute("parrot_service");
+            for(Parrot parrot : parrotService.getMap().values()) {
                 out.println("<p>" + parrot.getName() + " urodzona "
                         + parrot.getDateOfBirth() +  " waży "+ parrot.getWeight());
                 if(parrot.isExotic()) {
@@ -37,6 +38,7 @@ public class ShopFormServlet extends HttpServlet {
                 "<input type=\"submit\" value=\"Dodaj do koszyka\"></form></p>");
             }
         } else {
+            getServletContext().setAttribute("parrot_service",new ParrotService());
             out.println("<h2>W pamięci aplikacji nie ma papug!</h2>");
             out.println("<p><a href=\"http://localhost:8080/zad03/add\">Dodaj papugę</a></p>");
         }
@@ -66,10 +68,10 @@ public class ShopFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getSession().getAttribute("basket")!=null) {
-            ShopService.addToBasket(Integer.parseInt(request.getParameter("id")), request);
+            ShopService.addToBasket(Integer.parseInt(request.getParameter("id")), request,getServletContext());
         } else {
             request.getSession().setAttribute("basket",new ArrayList<Parrot>());
-            ShopService.addToBasket(Integer.parseInt(request.getParameter("id")), request);
+            ShopService.addToBasket(Integer.parseInt(request.getParameter("id")), request,getServletContext());
         }
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");

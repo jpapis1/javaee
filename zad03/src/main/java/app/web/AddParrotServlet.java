@@ -38,16 +38,16 @@ public class AddParrotServlet extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-
+        ParrotService parrotService = (ParrotService) getServletContext().getAttribute("parrot_service");
         boolean exotic = request.getParameter("exotic")!=null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(request.getParameter("dateOfBirth"), formatter);
         Date myDate = java.sql.Date.valueOf(date);
-        ParrotService.addParrot(new Parrot(request.getParameter("name"),
+        parrotService.addParrot(new Parrot(request.getParameter("name"),
                 myDate,
                 Double.valueOf(request.getParameter("weight")),
                 exotic));
-        out.println("<html><body>Zapisano: "+ ParrotService.getParrot(ParrotService.counter-1)  +
+        out.println("<html><body>Zapisano: "+ parrotService.getParrot(parrotService.counter-1)  +
                 "<p><a href=\"http://localhost:8080/zad03/shop\">Wróć do sklepu</a></p>" +
                 "<p><a href=\"http://localhost:8080/zad03/add\">Dodaj kolejną papugę</a></p>" +
                 "</body></html>");
