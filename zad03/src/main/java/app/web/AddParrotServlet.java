@@ -47,6 +47,7 @@ public class AddParrotServlet extends HttpServlet {
                 myDate,
                 Double.valueOf(request.getParameter("weight")),
                 exotic));
+        getServletContext().setAttribute("parrot_service",parrotService);
         out.println("<html><body>Zapisano: "+ parrotService.getParrot(parrotService.counter-1)  +
                 "<p><a href=\"http://localhost:8080/zad03/shop\">Wróć do sklepu</a></p>" +
                 "<p><a href=\"http://localhost:8080/zad03/add\">Dodaj kolejną papugę</a></p>" +
