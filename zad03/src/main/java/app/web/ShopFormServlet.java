@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 @WebServlet("/shop")
 public class ShopFormServlet extends HttpServlet {
@@ -39,19 +40,24 @@ public class ShopFormServlet extends HttpServlet {
             out.println("<h2>W pamięci aplikacji nie ma papug!</h2>");
             out.println("<p><a href=\"http://localhost:8080/zad03/add\">Dodaj papugę</a></p>");
         }
-        if(ShopService.getBasket().size()>0) {
-            out.println("<h2>Twój koszyk</h2>");
-            for(Parrot parrot : ShopService.getBasket()) {
-                out.println("<p>" + parrot.getName() + " urodzona "
-                        + parrot.getDateOfBirth() +  " waży "+ parrot.getWeight());
-                if(parrot.isExotic()) {
-                    out.print(" jest egzotyczna");
-                } else {
-                    out.print(" nie jest egzotyczna");
+        if(ShopService.getBasket(request)!=null) {
+            if (ShopService.getBasket(request).size() > 0) {
+                out.println("<h2>Twój koszyk</h2>");
+                for (Parrot parrot : ShopService.getBasket(request)) {
+                    out.println("<p>" + parrot.getName() + " urodzona "
+                            + parrot.getDateOfBirth() + " waży " + parrot.getWeight());
+                    if (parrot.isExotic()) {
+                        out.print(" jest egzotyczna");
+                    } else {
+                        out.print(" nie jest egzotyczna");
+                    }
+                    out.print("</p>");
                 }
-                out.print("</p>");
+            } else {
+                out.println("<h2>Nic nie masz w koszyku!</h2>");
             }
-        } else {
+        }
+        else {
             out.println("<h2>Nic nie masz w koszyku!</h2>");
         }
         out.println("</body></html>");
@@ -59,7 +65,12 @@ public class ShopFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ShopService.addToBasket(Integer.parseInt(request.getParameter("id")));
+        if(request.getSession().getAttribute("basket")!=null) {
+            ShopService.addToBasket(Integer.parseInt(request.getParameter("id")), request);
+        } else {
+            request.getSession().setAttribute("basket",new ArrayList<Parrot>());
+            ShopService.addToBasket(Integer.parseInt(request.getParameter("id")), request);
+        }
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
@@ -68,4 +79,5 @@ public class ShopFormServlet extends HttpServlet {
         out.println("<p><a href=\"http://localhost:8080/zad03/shop\">Wróć na stronę sklepu</a></p>");
         out.println("</body></html>");
     }
+
 }
