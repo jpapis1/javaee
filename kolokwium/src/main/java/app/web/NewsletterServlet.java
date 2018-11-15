@@ -14,28 +14,7 @@ public class NewsletterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
-        out.print("<html><body>" +
-                "<form action=\"saved.jsp\" method=\"post\">\n" +
-                "  Date from:<br>\n" +
-                "  <input type=\"date\" name=\"from\"><br>\n" +
-                "  Date to:<br>\n" +
-                "  <input type=\"text\" name=\"to\">\n" +
-                "    <p>Every Day<input type=\"radio\" id=\"day\" name=\"freq\" value=\"day\"\n" +
-                "         ></p>" +
-                "    <p>Every Month<input type=\"radio\" id=\"month\" name=\"freq\" value=\"month\"\n" +
-                "         ></p>" +
-                "    <p>Every Year<input type=\"radio\" id=\"year\" name=\"freq\" value=\"year\"\n" +
-                "         ></p>" +
-                "Parrots from:" +
-                "Australia: <input type=\"checkbox\" id=\"aus\" name=\"aus\"\n" +
-                "         checked>" +
-                "Europe: <input type=\"checkbox\" id=\"scales\" name=\"scales\"\n" +
-                "         checked>" +
-                "India: <input type=\"checkbox\" id=\"scales\" name=\"scales\"\n" +
-                "         checked>" +
-                "India: <input type=\"submit\" value=\"Ustaw\">" +
-                "</form>" +
-                "</body></html");
+        response.sendRedirect("newsletter.jsp");
     }
 
 
