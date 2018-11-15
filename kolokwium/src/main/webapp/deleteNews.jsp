@@ -7,7 +7,7 @@
 <body>
 Moje ustawienia:
 <%
-    settingsService.deleteSetting(sett.getId());
+    settingsService.deleteSetting(sett.getId()-1);
     out.print("<p>" + "USUNIĘTO" + "</p>");
 %>
 </body>
