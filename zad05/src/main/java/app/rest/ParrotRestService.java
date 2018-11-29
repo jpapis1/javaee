@@ -29,8 +29,13 @@ public class ParrotRestService {
 	@Path("/{parrotId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Parrot getParrot(@PathParam("parrotId") Integer id) {
-		Parrot p = pm.getParrot(id);
-		return p;
+	    try {
+            Parrot p = pm.getParrot(id);
+            return p;
+        } catch (Exception e) {
+	        return null;
+        }
+
 	}
 
 	@GET

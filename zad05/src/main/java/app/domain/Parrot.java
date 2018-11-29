@@ -9,6 +9,7 @@ public class Parrot {
     private double weight;
     private boolean isExotic;
 
+    public Parrot(){ }
     public Parrot(String name, Date dateOfBirth, double weight, boolean isExotic) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;

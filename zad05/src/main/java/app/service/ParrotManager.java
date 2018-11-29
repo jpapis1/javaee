@@ -12,7 +12,9 @@ public class ParrotManager {
     private List<Parrot> db = Collections.synchronizedList(new ArrayList<>());
 
     public void addParrot(Parrot parrot) {
+        parrot.setId(db.size());
         db.add(parrot);
+
     }
 
     public void deleteParrot(Parrot parrot){
