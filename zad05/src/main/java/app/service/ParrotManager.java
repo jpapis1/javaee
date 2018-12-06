@@ -22,7 +22,24 @@ public class ParrotManager {
     }
 
     public Parrot getParrot(Integer id) {
-        return db.get(id);
+        if(id>=db.size()) {
+            return null;
+        } else {
+            return db.get(id);
+        }
+    }
+    public boolean updateParrot(Integer id, Parrot parrot) {
+
+        Parrot parrotFromList = getParrot(id);
+        if(parrotFromList!=null) {
+            parrotFromList.setName(parrot.getName());
+            parrotFromList.setDateOfBirth(parrot.getDateOfBirth());
+            parrotFromList.setExotic(parrot.isExotic());
+            parrotFromList.setWeight(parrot.getWeight());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<Parrot> getAllParrots(){

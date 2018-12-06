@@ -8,13 +8,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -30,8 +24,7 @@ public class ParrotRestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Parrot getParrot(@PathParam("parrotId") Integer id) {
 	    try {
-            Parrot p = pm.getParrot(id);
-            return p;
+            return pm.getParrot(id);
         } catch (Exception e) {
 	        return null;
         }
@@ -63,6 +56,15 @@ public class ParrotRestService {
 	public Response clearParrots() {
 		pm.deleteAllParrots();
 		return Response.status(200).build();
+	}
+
+	@PUT
+	@Path("/{parrotId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateParrot(@PathParam("parrotId") Integer id,Parrot parrot) {
+		if(pm.updateParrot(id,parrot))
+		return Response.status(200).build();
+		else return Response.status(404).build();
 	}
 
 }
