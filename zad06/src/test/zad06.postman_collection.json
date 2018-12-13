@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "6a4ed739-a68a-4581-80b4-76680145ba22",
+		"name": "zad06",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addParrot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "25a1a050-008a-4261-9973-cfd6abfe5878",
+						"exec": [
+							"pm.test(\"Successful post, Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Robert\",\n        \"dateOfBirth\": 1265856753,\n        \"weight\": 1.1,\n        \"exotic\": true\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allParrots",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74070aa6-b14e-46e5-8fb3-139af24c33a8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getParrot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79845724-01eb-428e-bf5e-697703496e49",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateParrot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a34a218-178e-4843-a93e-efe2bd84de4f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"Kajetan\",\n        \"dateOfBirth\": 1396425856,\n        \"weight\": 0.5,\n        \"exotic\": true\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeParrot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f25d1368-7d59-47b9-8326-71b61ccd5130",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeAllParrots",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e69c29d-61c0-48d7-892d-5187db3d27a8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
