@@ -1,6 +1,8 @@
 package app.rest;
 
+import app.domain.Owner;
 import app.domain.Parrot;
+import app.service.OwnerManager;
 import app.service.ParrotManager;
 
 import java.util.Date;
@@ -18,7 +20,8 @@ public class ParrotRestService {
 
 	@Inject
 	private ParrotManager pm;
-
+	@Inject
+	private OwnerManager om;
 	@GET
 	@Path("/{parrotId}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -30,6 +33,17 @@ public class ParrotRestService {
         }
 
 	}
+    @GET
+    @Path("/{parrotId}/owner")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Owner getParrotsOwner(@PathParam("parrotId") Integer id) {
+        try {
+            return pm.getParrot(id).getOwner();
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -41,7 +55,6 @@ public class ParrotRestService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addParrot(Parrot parrot) {
 		pm.addParrot(parrot);
-
 		return Response.status(201).entity("Parrot").build();
 	}
 
@@ -49,7 +62,9 @@ public class ParrotRestService {
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Parrot test() {
-		return new Parrot("Nimfa",new Date(),0.4,true);
+	    Parrot parrot = new Parrot("Nimfa",new Date(),0.4,true);
+	    parrot.setOwner(new Owner("Jan","Kowalski"));
+		return parrot;
 	}
 
 	@DELETE
@@ -66,8 +81,6 @@ public class ParrotRestService {
 		} else {
 			return Response.status(404).build();
 		}
-
-
 	}
 
 	@PUT

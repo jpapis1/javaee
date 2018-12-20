@@ -1,5 +1,6 @@
 package app.service;
 
+import app.domain.Owner;
 import app.domain.Parrot;
 
 import javax.ejb.Singleton;
@@ -16,6 +17,12 @@ public class ParrotManager {
     EntityManager em;
 
     public void addParrot(Parrot parrot) {
+       List<Owner> owners = em.createNamedQuery("Owner.getUnique")
+                .setParameter("firstName",parrot.getOwner().getFirstName())
+                .setParameter("lastName",parrot.getOwner().getLastName()).getResultList();
+        if(owners.size()>0)
+        parrot.setOwner(owners.get(0));
+
         em.persist(parrot);
 
     }
@@ -36,6 +43,12 @@ public class ParrotManager {
     public boolean updateParrot(Integer id, Parrot parrot) {
         Parrot foundParrot = em.find(Parrot.class,id);
         if(foundParrot!=null) {
+            List<Owner> owners = em.createNamedQuery("Owner.getUnique")
+                    .setParameter("firstName",parrot.getOwner().getFirstName())
+                    .setParameter("lastName",parrot.getOwner().getLastName()).getResultList();
+            if(owners.size()>0)
+                parrot.setOwner(owners.get(0));
+
             parrot.setId(foundParrot.getId());
             em.merge(parrot);
             return true;

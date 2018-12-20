@@ -1,12 +1,14 @@
 package app.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
 @NamedQueries({
         @NamedQuery(name = "parrot.getAll", query = "Select p from Parrot p"),
         @NamedQuery(name = "parrot.deleteAll", query = "Delete from Parrot "),
+        @NamedQuery(name = "parrot.getOwnersParrots", query = "Select p from Parrot p WHERE p.owner.id = :id"),
 })
         public class Parrot {
     @Id
@@ -17,12 +19,24 @@ import java.util.Date;
     private double weight;
     private boolean isExotic;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NotNull
+    private Owner owner;
+
     public Parrot(){ }
     public Parrot(String name, Date dateOfBirth, double weight, boolean isExotic) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.weight = weight;
         this.isExotic = isExotic;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public int getId() {
