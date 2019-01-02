@@ -1,10 +1,13 @@
 package app.rest;
 
+import app.domain.Country;
 import app.domain.Owner;
 import app.domain.Parrot;
+import app.domain.ParrotStats;
 import app.service.OwnerManager;
 import app.service.ParrotManager;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +65,10 @@ public class ParrotRestService {
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Parrot test() {
-	    Parrot parrot = new Parrot("Nimfa",new Date(),0.4,true);
+		List<Country> list = new ArrayList<>();
+		list.add(new Country("Jordan"));
+		list.add(new Country("Australia"));
+	    Parrot parrot = new Parrot("Nimfa",new Date(),0.4,true,new ParrotStats("Dixie", 2, "Red"),list);
 	    parrot.setOwner(new Owner("Jan","Kowalski"));
 		return parrot;
 	}

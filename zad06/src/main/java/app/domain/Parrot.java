@@ -3,6 +3,7 @@ package app.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NamedQueries({
@@ -23,12 +24,37 @@ import java.util.Date;
     @NotNull
     private Owner owner;
 
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private ParrotStats stats;
+
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private List<Country> countriesVisited;
+
+
     public Parrot(){ }
-    public Parrot(String name, Date dateOfBirth, double weight, boolean isExotic) {
+    public Parrot(String name, Date dateOfBirth, double weight, boolean isExotic, ParrotStats stats,List<Country> countriesVisited) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.weight = weight;
         this.isExotic = isExotic;
+        this.stats = stats;
+        this.countriesVisited = countriesVisited;
+    }
+
+    public ParrotStats getStats() {
+        return stats;
+    }
+
+    public void setStats(ParrotStats stats) {
+        this.stats = stats;
+    }
+
+    public List<Country> getCountriesVisited() {
+        return countriesVisited;
+    }
+
+    public void setCountriesVisited(List<Country> countriesVisited) {
+        this.countriesVisited = countriesVisited;
     }
 
     public Owner getOwner() {
