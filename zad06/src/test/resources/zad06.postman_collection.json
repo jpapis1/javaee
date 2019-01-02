@@ -33,7 +33,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"name\": \"Robert\",\n        \"dateOfBirth\": 1265856753,\n        \"weight\": 1.1,\n        \"exotic\": true\n    }"
+					"raw": "{\n    \"name\": \"Paul\",\n    \"dateOfBirth\": 1546429263618,\n    \"weight\": 1.2,\n    \"owner\": {\n        \"firstName\": \"Henry\",\n        \"lastName\": \"Jones\"\n    },\n    \"stats\": {\n        \"nickName\": \"Rockie\",\n        \"timesSold\": 4,\n        \"color\": \"Blue\"\n    },\n    \"countriesVisited\": [\n        {\n            \"name\": \"USA\"\n        },\n        {\n            \"name\": \"Sweden\"\n        }\n    ],\n    \"exotic\": true\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/zad06/api/parrot/",
@@ -128,6 +128,21 @@
 						"parrot",
 						"1"
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getParrotsOwner",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
 				}
 			},
 			"response": []
@@ -255,6 +270,47 @@
 						"parrot",
 						""
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOwnersParrots",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/owner/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"owner",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "requestTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
 				}
 			},
 			"response": []
