@@ -1,7 +1,11 @@
 package app.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,12 +14,14 @@ import java.util.List;
         @NamedQuery(name = "parrot.getAll", query = "Select p from Parrot p"),
         @NamedQuery(name = "parrot.deleteAll", query = "Delete from Parrot "),
         @NamedQuery(name = "parrot.getOwnersParrots", query = "Select p from Parrot p WHERE p.owner.id = :id"),
+        @NamedQuery(name = "parrot.betweenDateOfBirth", query = "Select p from Parrot p WHERE p.dateOfBirth>=:fromDate and p.dateOfBirth<=:toDate")
 })
         public class Parrot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="CET")
     private Date dateOfBirth;
     private double weight;
     private boolean isExotic;
@@ -30,6 +36,10 @@ import java.util.List;
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Country> countriesVisited;
 
+    @JsonIgnore
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinTable(name="Bakset_Parrot", joinColumns=@JoinColumn(name="parrots_id"), inverseJoinColumns=@JoinColumn(name="baskets_id"))
+    private List<Basket> baskets = new ArrayList<>();
 
     public Parrot(){ }
     public Parrot(String name, Date dateOfBirth, double weight, boolean isExotic, ParrotStats stats,List<Country> countriesVisited) {
@@ -39,6 +49,14 @@ import java.util.List;
         this.isExotic = isExotic;
         this.stats = stats;
         this.countriesVisited = countriesVisited;
+    }
+
+    public List<Basket> getBaskets() {
+        return baskets;
+    }
+
+    public void setBaskets(List<Basket> baskets) {
+        this.baskets = baskets;
     }
 
     public ParrotStats getStats() {

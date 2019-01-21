@@ -8,8 +8,10 @@ import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.PathParam;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -17,7 +19,7 @@ public class ParrotManager {
     @PersistenceContext
     EntityManager em;
 
-    public void addParrot(Parrot parrot) {
+    public int addParrot(Parrot parrot) {
        List<Owner> owners = em.createNamedQuery("Owner.getUnique")
                 .setParameter("firstName",parrot.getOwner().getFirstName())
                 .setParameter("lastName",parrot.getOwner().getLastName()).getResultList();
@@ -25,6 +27,7 @@ public class ParrotManager {
         parrot.setOwner(owners.get(0));
 
         em.persist(parrot);
+        return parrot.getId();
 
     }
 
@@ -41,7 +44,11 @@ public class ParrotManager {
     public Parrot getParrot(Integer id) {
        return em.find(Parrot.class,id);
     }
-    public boolean updateParrot(Integer id, Parrot parrot) {
+    public List<Parrot> getParrotsConsideringDates(Date from,  Date to) {
+        List<Parrot> list = em.createNamedQuery("parrot.betweenDateOfBirth").setParameter("fromDate",from).setParameter("toDate",to).getResultList();
+        return list;
+    }
+        public boolean updateParrot(Integer id, Parrot parrot) {
         Parrot foundParrot = em.find(Parrot.class,id);
         if(foundParrot!=null) {
             List<Owner> owners = em.createNamedQuery("Owner.getUnique")

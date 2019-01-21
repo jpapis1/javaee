@@ -7,6 +7,8 @@ import app.domain.ParrotStats;
 import app.service.OwnerManager;
 import app.service.ParrotManager;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +38,21 @@ public class ParrotRestService {
         }
 
 	}
+	@GET
+	@Path("/{date1}/{date2}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Parrot> getParrotsConsideringDates(@PathParam("date1") String from, @PathParam("date2") String to) {
+		try {
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fDate = format.parse(from);
+			Date tDate = format.parse(to);
+			System.out.println(fDate + " -> " + tDate);
+			return pm.getParrotsConsideringDates(fDate, tDate);
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
     @GET
     @Path("/{parrotId}/owner")
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,6 +65,7 @@ public class ParrotRestService {
 
     }
 
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Parrot> getParrots() {
@@ -56,9 +74,10 @@ public class ParrotRestService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addParrot(Parrot parrot) {
-		pm.addParrot(parrot);
-		return Response.status(201).entity("Parrot").build();
+    @Produces(MediaType.TEXT_PLAIN)
+	public int addParrot(Parrot parrot) {
+		int id = pm.addParrot(parrot);
+		return id;
 	}
 
 	@GET
