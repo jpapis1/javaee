@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-       // @NamedQuery(name = "basket.getAverageNumberOfParrots", query = "Select avg "),
-})
 public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

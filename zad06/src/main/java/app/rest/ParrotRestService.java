@@ -56,7 +56,6 @@ public class ParrotRestService {
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date fDate = format.parse(from);
 			Date tDate = format.parse(to);
-			System.out.println(fDate + " -> " + tDate);
 			return pm.getParrotsConsideringDates(fDate, tDate);
 		} catch (Exception e) {
 			return null;

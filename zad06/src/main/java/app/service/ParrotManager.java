@@ -33,12 +33,10 @@ public class ParrotManager {
     }
 
     public boolean deleteParrot(Integer id){
-        System.out.println("DELETE");
 
         Parrot foundParrot = em.find(Parrot.class,id);
 
         if(foundParrot!=null) {
-            System.out.println("REMOVE PARROT");
             em.createNamedQuery("parrot.delete").setParameter("id",id).executeUpdate();
             //em.remove(foundParrot);
             return true;
