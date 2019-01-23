@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Country.getCountry", query = "Select c from Country c WHERE c.name=:name"),
+        @NamedQuery(name = "Country.getCountry", query = "Select c from Country c WHERE c.name=:name")
 })
 public class Country {
     @Id

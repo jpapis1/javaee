@@ -1,5 +1,6 @@
 package app.service;
 
+import app.domain.Basket;
 import app.domain.Country;
 import app.domain.Owner;
 import app.domain.Parrot;
@@ -32,9 +33,14 @@ public class ParrotManager {
     }
 
     public boolean deleteParrot(Integer id){
+        System.out.println("DELETE");
+
         Parrot foundParrot = em.find(Parrot.class,id);
+
         if(foundParrot!=null) {
-            em.remove(foundParrot);
+            System.out.println("REMOVE PARROT");
+            em.createNamedQuery("parrot.delete").setParameter("id",id).executeUpdate();
+            //em.remove(foundParrot);
             return true;
         } else {
             return false;
@@ -45,8 +51,10 @@ public class ParrotManager {
        return em.find(Parrot.class,id);
     }
     public List<Parrot> getParrotsConsideringDates(Date from,  Date to) {
-        List<Parrot> list = em.createNamedQuery("parrot.betweenDateOfBirth").setParameter("fromDate",from).setParameter("toDate",to).getResultList();
-        return list;
+        return em.createNamedQuery("parrot.betweenDateOfBirth").setParameter("fromDate",from).setParameter("toDate",to).getResultList();
+    }
+    public double getAverageWeightByColor(String color) {
+        return (double) em.createNamedQuery("parrot.getAvgWeightByParrotColor").setParameter("color",color).getSingleResult();
     }
         public boolean updateParrot(Integer id, Parrot parrot) {
         Parrot foundParrot = em.find(Parrot.class,id);

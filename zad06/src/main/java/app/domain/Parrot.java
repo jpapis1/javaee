@@ -14,7 +14,10 @@ import java.util.List;
         @NamedQuery(name = "parrot.getAll", query = "Select p from Parrot p"),
         @NamedQuery(name = "parrot.deleteAll", query = "Delete from Parrot "),
         @NamedQuery(name = "parrot.getOwnersParrots", query = "Select p from Parrot p WHERE p.owner.id = :id"),
-        @NamedQuery(name = "parrot.betweenDateOfBirth", query = "Select p from Parrot p WHERE p.dateOfBirth>=:fromDate and p.dateOfBirth<=:toDate")
+        @NamedQuery(name = "parrot.betweenDateOfBirth", query = "Select p from Parrot p WHERE p.dateOfBirth>=:fromDate and p.dateOfBirth<=:toDate"),
+        @NamedQuery(name = "parrot.delete", query = "Delete from Parrot where id=:id"),
+        @NamedQuery(name = "parrot.getAvgWeightByParrotColor", query = "select avg(p.weight) from Parrot p join ParrotStats ps ON ps=p.stats WHERE p.stats.color=:color")
+
 })
         public class Parrot {
     @Id

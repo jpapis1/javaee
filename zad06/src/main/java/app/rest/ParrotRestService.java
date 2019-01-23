@@ -39,6 +39,16 @@ public class ParrotRestService {
 
 	}
 	@GET
+	@Path("/getAvgWeight/{color}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Double getAvgWeightByColor(@PathParam("color") String color) {
+
+		try {double d = pm.getAverageWeightByColor(color); return d;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	@GET
 	@Path("/{date1}/{date2}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Parrot> getParrotsConsideringDates(@PathParam("date1") String from, @PathParam("date2") String to) {
