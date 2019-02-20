@@ -1,5 +1,8 @@
 package app.domain;
 
+import app.view.View;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +13,11 @@ public class ParrotStats {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @JsonView(View.BasicParrotInfo.class)
     private String nickName;
+    @JsonView(View.DetailedParrotInfo.class)
     private int timesSold;
+    @JsonView(View.DetailedParrotInfo.class)
     private String color;
 
     public ParrotStats() {}

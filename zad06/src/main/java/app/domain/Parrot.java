@@ -1,7 +1,9 @@
 package app.domain;
 
+import app.view.View;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,20 +24,28 @@ import java.util.List;
         public class Parrot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(View.BasicParrotInfo.class)
     private int id;
+    @JsonView(View.BasicParrotInfo.class)
     private String name;
+    @JsonView(View.BasicParrotInfo.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="CET")
     private Date dateOfBirth;
+    @JsonView(View.BasicParrotInfo.class)
     private double weight;
+
     private boolean isExotic;
 
+    @JsonView(View.DetailedParrotInfo.class)
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @NotNull
     private Owner owner;
 
+    @JsonView(View.BasicParrotInfo.class)
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private ParrotStats stats;
 
+    @JsonView(View.DetailedParrotInfo.class)
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Country> countriesVisited;
 

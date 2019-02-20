@@ -6,6 +6,8 @@ import app.domain.Parrot;
 import app.domain.ParrotStats;
 import app.service.OwnerManager;
 import app.service.ParrotManager;
+import app.view.View;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,12 +33,26 @@ public class ParrotRestService {
 	@GET
 	@Path("/{parrotId}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@JsonView(View.DetailedParrotInfo.class)
 	public Parrot getParrot(@PathParam("parrotId") Integer id) {
 	    try {
+
             return pm.getParrot(id);
         } catch (Exception e) {
 	        return null;
         }
+
+	}
+	@GET
+	@Path("/{parrotId}/basic")
+	@Produces(MediaType.APPLICATION_JSON)
+	@JsonView(View.BasicParrotInfo.class)
+	public Parrot getBasicParrot(@PathParam("parrotId") Integer id) {
+		try {
+			return pm.getParrot(id);
+		} catch (Exception e) {
+			return null;
+		}
 
 	}
 	@GET
@@ -90,15 +107,13 @@ public class ParrotRestService {
 	}
 
 	@GET
-	@Path("/test")
+	@Path("/byColorAndOwner/{color}/{fName}/{lName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Parrot test() {
-		List<Country> list = new ArrayList<>();
-		list.add(new Country("Jordan"));
-		list.add(new Country("Australia"));
-	    Parrot parrot = new Parrot("Nimfa",new Date(),0.4,true,new ParrotStats("Dixie", 2, "Red"),list);
-	    parrot.setOwner(new Owner("Jan","Kowalski"));
-		return parrot;
+	@JsonView(View.BasicParrotInfo.class)
+	public List<Parrot> getParrotsOfSpecificColorAndOwner(@PathParam("color") String color,
+														  @PathParam("fName") String firstName,
+														  @PathParam("lName") String lastName) {
+		return 	pm.getParrotsOfSpecificColorAndOwner(color,firstName,lastName);
 	}
 
 	@DELETE

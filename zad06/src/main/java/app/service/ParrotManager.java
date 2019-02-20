@@ -9,6 +9,10 @@ import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.ws.rs.PathParam;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,7 +53,25 @@ public class ParrotManager {
        return em.find(Parrot.class,id);
     }
     public List<Parrot> getParrotsConsideringDates(Date from,  Date to) {
-        return em.createNamedQuery("parrot.betweenDateOfBirth").setParameter("fromDate",from).setParameter("toDate",to).getResultList();
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Parrot> criteria = builder.createQuery(Parrot.class);
+        Root<Parrot> root = criteria.from(Parrot.class);
+        Predicate condition = builder.and(builder.greaterThanOrEqualTo(root.get("dateOfBirth"),from),
+                builder.lessThanOrEqualTo(root.get("dateOfBirth"),to));
+        criteria.where(condition);
+        return em.createQuery(criteria).getResultList();
+        //return em.createNamedQuery("parrot.betweenDateOfBirth").setParameter("fromDate",from).setParameter("toDate",to).getResultList();
+    }
+    public List<Parrot> getParrotsOfSpecificColorAndOwner(String color,String firstName, String lastName) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Parrot> criteria = builder.createQuery(Parrot.class);
+        Root<Parrot> root = criteria.from(Parrot.class);
+        Predicate condition = builder.and(builder.equal(root.get("stats").get("color"),color),
+                builder.equal(root.get("owner").get("firstName"),firstName),
+                builder.equal(root.get("owner").get("lastName"),lastName));
+        criteria.where(condition);
+        return em.createQuery(criteria).getResultList();
+
     }
     public double getAverageWeightByColor(String color) {
         return (double) em.createNamedQuery("parrot.getAvgWeightByParrotColor").setParameter("color",color).getSingleResult();
@@ -69,6 +91,7 @@ public class ParrotManager {
         }
         return false;
     }
+
 
     public List<Parrot> getAllParrots(){
         return em.createNamedQuery("parrot.getAll").getResultList();

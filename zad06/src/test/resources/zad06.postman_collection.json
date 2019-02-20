@@ -242,6 +242,241 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "addParrot6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25a1a050-008a-4261-9973-cfd6abfe5878",
+								"exec": [
+									"pm.test(\"Successful post, Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Steve\",\n    \"dateOfBirth\": 1946429263618,\n    \"weight\": 0.2,\n    \"owner\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Cleese\"\n    },\n    \"stats\": {\n        \"nickName\": \"Si\",\n        \"timesSold\": 2,\n        \"color\": \"Blue\"\n    },\n    \"countriesVisited\": [\n        {\n            \"name\": \"Poland\"\n        },\n        {\n            \"name\": \"Sweden\"\n        }\n    ],\n    \"exotic\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/zad06/api/parrot/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"zad06",
+								"api",
+								"parrot",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addParrot7",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25a1a050-008a-4261-9973-cfd6abfe5878",
+								"exec": [
+									"pm.test(\"Successful post, Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rupert\",\n    \"dateOfBirth\": 1007171217000,\n    \"weight\": 1.2,\n    \"owner\": {\n        \"firstName\": \"Henry\",\n        \"lastName\": \"Jones\"\n    },\n    \"stats\": {\n        \"nickName\": \"Nickie\",\n        \"timesSold\": 0,\n        \"color\": \"Red\"\n    },\n    \"countriesVisited\": [\n        {\n            \"name\": \"USA\"\n        },\n        {\n            \"name\": \"Poland\"\n        }\n    ],\n    \"exotic\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/zad06/api/parrot/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"zad06",
+								"api",
+								"parrot",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addParrot8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25a1a050-008a-4261-9973-cfd6abfe5878",
+								"exec": [
+									"pm.test(\"Successful post, Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hillary\",\n    \"dateOfBirth\": 1062259217000,\n    \"weight\": 1.2,\n    \"owner\": {\n        \"firstName\": \"Donald\",\n        \"lastName\": \"Trump\"\n    },\n    \"stats\": {\n        \"nickName\": \"Lolo\",\n        \"timesSold\": 2,\n        \"color\": \"Grey\"\n    },\n    \"countriesVisited\": [\n    ],\n    \"exotic\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/zad06/api/parrot/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"zad06",
+								"api",
+								"parrot",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addParrot9",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25a1a050-008a-4261-9973-cfd6abfe5878",
+								"exec": [
+									"pm.test(\"Successful post, Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Donut\",\n    \"dateOfBirth\": 1062259217000,\n    \"weight\": 1.2,\n    \"owner\": {\n        \"firstName\": \"Donald\",\n        \"lastName\": \"Trump\"\n    },\n    \"stats\": {\n        \"nickName\": \"Pixie\",\n        \"timesSold\": 2,\n        \"color\": \"Blue\"\n    },\n    \"countriesVisited\": [\n    ],\n    \"exotic\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/zad06/api/parrot/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"zad06",
+								"api",
+								"parrot",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addParrot10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25a1a050-008a-4261-9973-cfd6abfe5878",
+								"exec": [
+									"pm.test(\"Successful post, Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Harry\",\n    \"dateOfBirth\": 1107171217000,\n    \"weight\": 0.2,\n    \"owner\": {\n        \"firstName\": \"Michael\",\n        \"lastName\": \"Jackson\"\n    },\n    \"stats\": {\n        \"nickName\": \"Rose\",\n        \"timesSold\": 2,\n        \"color\": \"Red\"\n    },\n    \"countriesVisited\": [\n        {\n            \"name\": \"Denmark\"\n        },\n        {\n            \"name\": \"Brazil\"\n        }\n    ],\n    \"exotic\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/zad06/api/parrot/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"zad06",
+								"api",
+								"parrot",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -286,6 +521,35 @@
 			"response": []
 		},
 		{
+			"name": "getParrotsOfSpecificColorAndOwner",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/byColorAndOwner/Red/Henry/Jones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"byColorAndOwner",
+						"Red",
+						"Henry",
+						"Jones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "getParrot",
 			"event": [
 				{
@@ -320,6 +584,33 @@
 						"api",
 						"parrot",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBasicParrot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/1/basic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"1",
+						"basic"
 					]
 				}
 			},
@@ -437,7 +728,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/zad06/api/parrot/2",
+					"raw": "http://localhost:8080/zad06/api/parrot/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -447,7 +738,194 @@
 						"zad06",
 						"api",
 						"parrot",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createBasket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/basket/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"basket",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addToBasket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/basket/23/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"basket",
+						"23",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBasket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/basket/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"basket",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOwnersParrots",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "104f3d4b-cd85-4445-bf57-df7bb5fafcc7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/owner/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"owner",
 						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAvgWeightByColor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d0863ad-057e-4a5d-87d9-71cb42f922c7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/getAvgWeight/Red",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"getAvgWeight",
+						"Red"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getParrotsConsideringDates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/zad06/api/parrot/2005-01-31/2009-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"zad06",
+						"api",
+						"parrot",
+						"2005-01-31",
+						"2009-12-31"
 					]
 				}
 			},
@@ -529,193 +1007,6 @@
 						"api",
 						"parrot",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getOwnersParrots",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "104f3d4b-cd85-4445-bf57-df7bb5fafcc7",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/zad06/api/owner/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"zad06",
-						"api",
-						"owner",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "createBasket",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/zad06/api/basket/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"zad06",
-						"api",
-						"basket",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "addToBasket",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/zad06/api/basket/23/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"zad06",
-						"api",
-						"basket",
-						"23",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getBasket",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/zad06/api/basket/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"zad06",
-						"api",
-						"basket",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAvgWeightByColor",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "2d0863ad-057e-4a5d-87d9-71cb42f922c7",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/zad06/api/parrot/getAvgWeight/Brown",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"zad06",
-						"api",
-						"parrot",
-						"getAvgWeight",
-						"Brown"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getParrotsConsideringDates",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/zad06/api/parrot/2005-01-31/2009-12-31",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"zad06",
-						"api",
-						"parrot",
-						"2005-01-31",
-						"2009-12-31"
 					]
 				}
 			},

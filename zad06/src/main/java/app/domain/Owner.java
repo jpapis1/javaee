@@ -1,6 +1,12 @@
 package app.domain;
 
+import app.view.View;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NamedQueries({
@@ -12,7 +18,6 @@ public class Owner {
     private int id;
     private String firstName;
     private String lastName;
-
     public Owner() {
     }
 
